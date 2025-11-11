@@ -53,3 +53,32 @@ do
       
       echo ""
  done
+
+
+
+
+
+
+//2 FILE CODE 
+
+
+
+
+
+#!/bin/bash
+
+mkdir -p maindir/subdir
+echo "MAIN AND SUB DIR CREATED"
+
+echo "ENTER THE CONTENT FOR 1 ST FILE AND TO EXIT AND SAVE CMD+D"
+cat > maindir/file_1.txt
+
+cp maindir/file_1.txt maindir/file_2.txt
+echo "FILE COPIED FROM FILE_1 TO FILE_2"
+
+chmod 744 maindir/file_1.txt
+chmod 744 maindir/file_2.txt
+echo "PERMISSION SET "
+
+echo "SHOWING THE FILE WITH PERMISSIONS"
+ls -l maindir

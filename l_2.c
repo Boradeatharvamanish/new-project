@@ -87,3 +87,59 @@ exit(1);
 
 }
     
+
+
+
+
+// Zombie process:
+// code:
+
+#include<sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void){
+
+pid_t pid;
+if((pid=fork())<0)
+printf("\t fork error\n");
+else if(pid==0)
+printf("child process id is %d\n",getpid());
+else{
+sleep(10);
+printf("*****parent\n");
+system("ps -axj | tail");
+}
+
+exit(0);
+
+}
+
+
+// Orphan process:
+// code:
+
+#include<sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void){
+
+int pid=fork();
+if(pid>0){
+printf("parent process id is  %d\n",getpid());
+printf("child process id is %d\n",pid);
+}
+
+else if(pid==0){
+sleep(10);
+printf("child process id is  %d\n",getpid());
+printf("parent process id is  %d\n",getppid());
+}
+return 0;
+
+}
+
+
